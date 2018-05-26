@@ -1,0 +1,11 @@
+---
+- hosts: client1.abc.com
+  user: yaswanthreddy
+  become: yes
+  tasks:
+  - name: install httpd package
+    yum: name=httpd state=installed
+  - name: copy a file
+    copy: src=index.html dest=/var/www/html/index.html
+  - name: start the httpd service
+    service: name=httpd state=restarted
